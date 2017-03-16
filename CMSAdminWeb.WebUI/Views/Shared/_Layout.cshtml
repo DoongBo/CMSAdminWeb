@@ -1,0 +1,358 @@
+﻿@model CMSAdminWeb.WebUI.Models.Overview
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>机房管理系统 | @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- STYLESHEETS -->
+    <!--[if lt IE 9]>
+        <script src="Scripts/js/flot/excanvas.min.js">
+        </script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+        </script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js">
+        </script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="Content/css/cloud-admin.css">
+    <link rel="stylesheet" type="text/css" href="Content/css/themes/default.css" id="skin-switcher">
+    <link rel="stylesheet" type="text/css" href="Content/css/responsive.css">
+    <link href="Content/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- DATE RANGE PICKER -->
+    <link rel="stylesheet" type="text/css" href="Scripts/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <!-- FONTS -->
+    <link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="navbar clearfix" id="header">
+        <div class="container">
+            <div class="navbar-brand">
+                <!--系统标志-->
+                <a href="">
+                    <img src="Content/img/logo/logo.png" alt="Cloud Admin Logo" class="Content/img-responsive" height="30" width="120">
+                </a>
+                <!-- /系统标志 -->
+                <!-- TEAM STATUS FOR MOBILE -->
+                <div class="visible-xs">
+                    <a href="#" class="team-status-toggle switcher btn dropdown-toggle">
+                        <i class="fa fa-users"></i>
+                    </a>
+                </div>
+                <!-- /TEAM STATUS FOR MOBILE -->
+                <!-- SIDEBAR COLLAPSE -->
+                <div id="sidebar-collapse" class="sidebar-collapse btn">
+                    <i class="fa fa-bars"
+                       data-icon1="fa fa-bars"
+                       data-icon2="fa fa-bars"></i>
+                </div>
+                <!-- /SIDEBAR COLLAPSE -->
+            </div>
+            <!-- 左边皮肤按钮和管理员列表开启按钮-->
+            <ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+                <li class="dropdown">
+                    <a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
+                        <i class="fa fa-users"></i>
+                        <span class="name">机房概览</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-cog"></i>
+                        <span class="name">界面皮肤</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu skins">
+                        <li class="dropdown-title">
+                            <span><i class="fa fa-leaf"></i> 主题皮肤</span>
+                        </li>
+                        <li><a href="#" data-skin="default">默认</a></li>
+                        <li><a href="#" data-skin="night">夜间</a></li>
+                        <li><a href="#" data-skin="earth">泥土</a></li>
+                        <li><a href="#" data-skin="utopia">乌托邦</a></li>
+                        <li><a href="#" data-skin="nature">自然</a></li>
+                        <li><a href="#" data-skin="graphite">石墨</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /左边皮肤按钮和管理员列表开启按钮 -->
+            <!-- 右上角按钮组 -->
+            <ul class="nav navbar-nav pull-right">
+                <!-- 开始学生反馈下拉表-->
+                <li class="dropdown" id="header-notification">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge">@Model.NotiCount</span>
+
+                    </a>
+                    <ul class="dropdown-menu notification">
+                        <li class="dropdown-title">
+                            <span><i class="fa fa-bell"></i> @Model.NotiCount 条新消息</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-success"><i class="fa fa-user"></i></span>
+                                <span class="body">
+                                    <span class="message">@Model.UserCount  学生在线 </span>
+                                    <span class="time">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span>Just now</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-primary"><i class="fa fa-comment"></i></span>
+                                <span class="body">
+                                   @*学生反馈*@
+                                    <span class="message">@Model.NotiCount 条学生反馈</span>
+                                    <span class="time">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span>@Model.NotiLastTime</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-warning"><i class="fa fa-lock"></i></span>
+                                <span class="body">
+                                    @*最后一次指令*@
+                                    <span class="message">@Model.LastCommand</span>
+                                    <span class="time">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span>@Model.LastCommandTime</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="footer">
+                            <a href="#">查看所有学生反馈记录 <i class="fa fa-arrow-circle-right"></i></a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 结束学生反馈下拉表 -->
+                <!-- 开始公告下拉表 -->
+                <li class="dropdown" id="header-message">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge">@Model.MessagesCount</span>
+                    </a>
+                    <ul class="dropdown-menu inbox">
+                        <li class="dropdown-title">
+                            <span><i class="fa fa-envelope-o"></i>@Model.MessagesCount</span>
+                            <span class="compose pull-right tip-right" title="Compose message"><i class="fa fa-pencil-square-o"></i></span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="Content/img/avatars/avatar2.jpg" alt="" />
+                                <span class="body">
+                                    <span class="from">@Model.ManagerName</span>
+                                    <span class="message">
+                                        @Model.MessagesContent
+                                    </span>
+                                    <span class="time">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span>@Model.MessagesTime</span>
+                                    </span>
+                                </span>
+
+                            </a>
+                        </li>
+                        <li class="footer">
+                            <a href="#"> 查看所有管理员通知 <i class="fa fa-arrow-circle-right"></i></a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 结束公告下拉表 -->
+                <!-- 开启用户操作下拉表-->
+                <li class="dropdown user" id="header-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img alt="" src="Content/img/avatars/avatar3.jpg" />
+                        <span class="username">@Model.UserName</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-user"></i> 我的账户</a></li>
+                        <li><a href="login.html"><i class="fa fa-power-off"></i> 退出登录</a></li>
+                    </ul>
+                </li>
+                <!-- 结束用户操作下拉表 -->
+            </ul>
+            <!-- /右上角按钮组-->
+        </div>
+
+        <!-- 管理员列表 -->
+        <div class="container team-status" id="team-status">
+            <div id="scrollbar">
+                <div class="handle">
+                </div>
+            </div>
+            <div id="teamslider">
+                <ul class="team-list">
+                    <li class="current">
+                        <a href="javascript:void(0);">
+                            <span class="image">
+                                <label class="h1">C303</label>
+                            </span>
+                            <span class="title">
+                                @Model.PCState
+                            </span>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" style="width: 33%">
+                                </div>
+                                <div class="progress-bar progress-bar-warning" style="width: 33%">
+                                </div>
+                                <div class="progress-bar progress-bar-danger" style="width: 34%">
+                                </div>
+                            </div>
+                            <div class="status">
+                                <div class="field">
+                                    <span class="badge badge-green">@Model.PCCount</span> 计算机数量
+                                    <span class="pull-right fa fa-check"></span>
+                                </div>
+                                <div class="field">
+                                    <span class="badge badge-orange">@Model.OnlineCount</span> 在线人数
+                                    <span class="pull-right fa fa-adjust"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /管理员列表  -->
+    </header>
+    <!--/HEADER -->
+    <!-- PAGE -->
+    <section id="page">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-menu nav-collapse">
+                <div class="divide-20"></div>               
+                <!-- SIDEBAR MENU -->
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">首页面板</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">实时监控</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="elements.html"><span class="sub-menu-text">机器状态</span></a></li>
+                            <li><a class="" href="notifications.html"><span class="sub-menu-text">在线学生</span></a></li>
+                            <li><a class="" href="buttons_icons.html"><span class="sub-menu-text">未出勤学生</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-table fa-fw"></i> <span class="menu-text">统计报表</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="simple_table.html"><span class="sub-menu-text">按课程统计</span></a></li>
+                            <li><a class="" href="dynamic_tables.html"><span class="sub-menu-text">按机房统计</span></a></li>
+                            <li><a class="" href="jqgrid_plugin.html"><span class="sub-menu-text">按学生统计</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-pencil-square-o fa-fw"></i> <span class="menu-text">消息管理</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="forms.html"><span class="sub-menu-text">通知管理</span></a></li>
+                            <li><a class="" href="wizards_validations.html"><span class="sub-menu-text">学生反馈</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> <span class="menu-text">查看课表</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="flot_charts.html"><span class="sub-menu-text">机房排课表</span></a></li>
+                            <li><a class="" href="xcharts.html"><span class="sub-menu-text">学生值班表</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-columns fa-fw"></i> <span class="menu-text">高级权限</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="mini_sidebar.html"><span class="sub-menu-text">机房机器信息</span></a></li>
+                            <li><a class="" href="fixed_header.html"><span class="sub-menu-text">所有学生信息</span></a></li>
+                            <li><a class="" href="fixed_header_sidebar.html"><span class="sub-menu-text">课程文件管理</span></a></li>
+                            <li><a class="" href="fixed_header.html"><span class="sub-menu-text">授课教师管理</span></a></li>
+                            <li><a class="" href="fixed_header.html"><span class="sub-menu-text">教师课程审核</span></a></li>
+                            <li><a class="" href="fixed_header.html"><span class="sub-menu-text">学生管理员信息</span></a></li>
+                            <li><a class="" href="fixed_header.html"><span class="sub-menu-text">学生管理员日志</span></a></li>
+                            <li><a class="" href="fixed_header.html"><span class="sub-menu-text">学生管理员值班</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- /SIDEBAR MENU -->
+            </div>
+        </div>
+        <!-- /侧边栏 -->
+        <div id="main-content">
+            <div class="container">
+                <div class="row">
+                    <div id="content" class="col-lg-12">
+                        <!-- PAGE HEADER-->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="page-header">
+                                    <div class="clearfix">
+                                        <h3 class="content-title pull-left">@ViewBag.Title</h3>
+                                    </div>
+                                    <div class="description">
+                                        @RenderBody()
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /PAGE HEADER -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/PAGE -->
+    <!-- JAVASCRIPTS -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQUERY -->
+    <script src="Scripts/js/jquery/jquery-2.0.3.min.js"></script>
+    <!-- JQUERY UI-->
+    <script src="Scripts/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="Content/bootstrap-dist/js/bootstrap.min.js"></script>
+
+
+    <!-- DATE RANGE PICKER -->
+    <script src="Scripts/js/bootstrap-daterangepicker/moment.min.js"></script>
+
+    <script src="Scripts/js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+    <!-- SLIMSCROLL -->
+    <script type="text/javascript" src="Scripts/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="Scripts/js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+    <!-- COOKIE -->
+    <script type="text/javascript" src="Scripts/js/jQuery-Cookie/jquery.cookie.min.js"></script>
+    <!-- CUSTOM SCRIPT -->
+    <script src="Scripts/js/script.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            App.setPage("widgets_box");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+    </script>
+    <!-- /JAVASCRIPTS -->
+</body>
+</html>
