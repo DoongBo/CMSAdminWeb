@@ -1,5 +1,4 @@
-﻿using CMSAdminWeb.Domain.Abstract;
-using CMSAdminWeb.Domain.Entities;
+﻿using CMSAdminWeb.Domain.Concrete;
 using CMSAdminWeb.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -9,18 +8,15 @@ using System.Web.Mvc;
 
 namespace CMSAdminWeb.WebUI.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        IUserRespository userreposotory;
-        public HomeController(IUserRespository userrep)
-        {
-            userreposotory = userrep;
-        }
         // GET: Home
         public ActionResult Index()
         {
+            //code first ，当没有数据库时生成数据库
+            //EFDbContext efcontext = new EFDbContext();
             Overview overview = new Overview();
-            IEnumerable<User> users = userreposotory.Users;
             return View(overview);
         }
     }

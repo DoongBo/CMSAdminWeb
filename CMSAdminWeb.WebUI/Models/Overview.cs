@@ -11,13 +11,17 @@ namespace CMSAdminWeb.WebUI.Models
         public string UserCount { get; set; }
         public string NotiLastTime { get; set; }
         public string NotiCount { get; set; }
+
         public string LastCommand { get; set; }
         public string LastCommandTime { get; set; }
+
         public string MessagesCount { get; set; }
         public string ManagerName { get; set; }
         public string MessagesContent { get; set; }
         public string MessagesTime { get; set; }
+
         public string UserName { get; set; }
+
         public string PCCount { get; set; }
         public string OnlineCount { get; set; }
         public string PCState { get; set; }

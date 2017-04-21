@@ -17,5 +17,6 @@ namespace CMSAdminWeb.Domain.Entities
         public string User_Class { get; set; }
         public string User_PSD { get; set; }
         public int User_HasNew { get; set; }
+        
     }
 }

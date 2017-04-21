@@ -5081,7 +5081,7 @@ button.close {
   padding: 0 5px;
 }
 .tooltip-inner {
-  max-width: 200px;
+  max-width: 180px;
   padding: 3px 8px;
   color: #ffffff;
   text-align: center;
@@ -6300,6 +6300,7 @@ ul.list-inline {
 @media only screen and (max-width: 767px) {
   /* Sidebar collapse */
   .sidebar-collapse {
+    font-size:18px;
     padding: 10px 10px 0 0;
     position: absolute;
     top: 10px;
@@ -6383,7 +6384,7 @@ ul.list-inline {
 }
 .hero .section {
   display: block;
-  min-height: 200px;
+  min-height: 180px;
   padding: 40px 0 60px;
   text-align: center;
 }
@@ -6499,7 +6500,7 @@ i.extralarge {
 #parallax-1 {
   /* Image credit : http://farm9.staticflickr.com/8150/7523098056_c31207d1b3_k.jpg */
 
-  background: url("../img/parallax.jpg") 50% 0 no-repeat fixed;
+  background: url("../Image/parallax.jpg") 50% 0 no-repeat fixed;
   height: 620px;
   margin: 0;
   width: 100%;
@@ -6517,7 +6518,7 @@ i.extralarge {
 #parallax-2 {
   /* Image credit : http://farm9.staticflickr.com/8150/7523098056_c31207d1b3_k.jpg */
 
-  background: url("../img/parallax.jpg") 50% 0 no-repeat fixed;
+  background: url("../Image/parallax.jpg") 50% 0 no-repeat fixed;
   margin: 0 !important;
   width: 100%;
   max-width: 1920px;
@@ -6531,7 +6532,7 @@ i.extralarge {
 #parallax-3 {
   /* Image credit : http://farm9.staticflickr.com/8150/7523098056_c31207d1b3_k.jpg */
 
-  background: url("../img/parallax.jpg") 50% 0 no-repeat fixed;
+  background: url("../Image/parallax.jpg") 50% 0 no-repeat fixed;
   height: 700px;
   margin: 0 !important;
   width: 100%;
@@ -6744,10 +6745,10 @@ i.darkred:hover {
 }
 /* Patterns */
 .pattern {
-  background-image: url("../img/pattern.png");
+  background-image: url("../Image/pattern.png");
 }
 .dots {
-  background-image: url("../img/dots.png");
+  background-image: url("../Image/dots.png");
 }
 @media only screen and (max-width: 480px) {
   #parallax-1 {

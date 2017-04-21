@@ -10,6 +10,29 @@ namespace CMSAdminWeb.Domain.Concrete
 {
     public class EFDbContext : DbContext
     {
+        //code first,初始化时若是数据库不存在则按一下对象创建
+        //public EFDbContext()
+        //{
+        //    this.Users.Load();
+        //    this.Files.Load();
+        //    this.Managers.Load();
+        //    this.Messages.Load();
+        //    this.Sccrecords.Load();
+        //    this.SignRecords.Load();
+        //    this.Studutys.Load();
+        //    this.Terms.Load();
+        //    this.Pcmessages.Load();
+        //    this.Notices.Load();
+        //}
         public DbSet<User> Users { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<Manager> Managers { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Sccrecord> Sccrecords { get; set; }
+        public DbSet<SignRecord> SignRecords { get; set; }
+        public DbSet<Studuty> Studutys { get; set; }
+        public DbSet<Term> Terms { get; set; }
+        public DbSet<Pcmessage> Pcmessages { get; set; }
+        public DbSet<Notice> Notices { get; set; }
     } 
 }

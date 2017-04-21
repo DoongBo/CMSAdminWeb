@@ -45,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -76,16 +78,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IUserRespository.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Abstract\IRespository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
-    <Compile Include="Concrete\EFUserRepository.cs" />
+    <Compile Include="Concrete\EFRepository.cs" />
+    <Compile Include="Entities\File.cs" />
+    <Compile Include="Entities\Manager.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Notice.cs" />
+    <Compile Include="Entities\Pcmessage.cs" />
+    <Compile Include="Entities\Sccrecord.cs" />
+    <Compile Include="Entities\SignRecord.cs" />
+    <Compile Include="Entities\Studuty.cs" />
+    <Compile Include="Entities\Term.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
