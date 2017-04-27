@@ -1,6 +1,4 @@
-﻿@model CMSAdminWeb.WebUI.Models.Overview
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,7 +6,7 @@
     <title> 机房管理系统 CMS</title>
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+    <!-- STYLESHEETS --><!--[if lt IE 9]><script src="~/Scripts/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
     <link rel="stylesheet" type="text/css" href="~/Content/cloud-admin.css">
     <link rel="stylesheet" type="text/css" href="~/Content/themes/default.css" id="skin-switcher">
     <link rel="stylesheet" type="text/css" href="~/Content/responsive.css">
@@ -18,330 +16,49 @@
     <link rel="stylesheet" type="text/css" href="~/Scripts/bootstrap-daterangepicker/daterangepicker-bs3.css" />
     <!-- FONTS -->
 
-    @*<link href='<!--<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>-->' rel='stylesheet' type='text/css'>*@
+    @* <!--<link href='<!--<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>-->' rel='stylesheet' type='text/css'>-->*@
 </head>
 <body>
         <!-- HEADER -->
-        <header class="navbar clearfix" id="header">
-            <div class="container">
-                <div class="navbar-brand">
-                    <!-- COMPANY LOGO -->
-                    <a href="index.html">
-                        <img src="/Image/logo/logo.png" alt="Cloud Admin Logo" class="img-responsive" height="30" width="120">
-                    </a>
-                    <!-- /COMPANY LOGO -->
-                    <!-- TEAM STATUS FOR MOBILE -->
-                    <div class="visible-xs">
-                        <a href="#" class="team-status-toggle switcher btn dropdown-toggle">
-                            <i class="fa fa-users"></i>
-                        </a>
-                    </div>
-                    <!-- /TEAM STATUS FOR MOBILE -->
-                    <!-- SIDEBAR COLLAPSE -->
-                    <div id="sidebar-collapse" class="sidebar-collapse btn">
-                        <i class="fa fa-bars"
-                           data-icon1="fa fa-bars"
-                           data-icon2="fa fa-bars"></i>
-                    </div>
-                    <!-- /SIDEBAR COLLAPSE -->
-                </div>
-                <!-- NAVBAR LEFT -->
-                <ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
-                    <li class="dropdown">
-                        <a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
-                            <i class="fa fa-users"></i>
-                            <span class="name">机房概况</span>
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /NAVBAR LEFT -->
-                <!-- BEGIN TOP NAVIGATION MENU -->
-                <ul class="nav navbar-nav pull-right">
-                    <!-- BEGIN NOTIFICATION DROPDOWN -->
-                    <li class="dropdown" id="header-notification">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell"></i>
-                            <span class="badge">@Model.NotiCount</span>
-
-                        </a>
-                        <ul class="dropdown-menu notification">
-                            <li class="dropdown-title">
-                                <span><i class="fa fa-bell"></i> @Model.NotiCount 条新消息</span>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-success"><i class="fa fa-user"></i></span>
-                                    <span class="body">
-                                        <span class="message">@Model.UserCount 人在线 </span>
-                                        <span class="time">
-                                            <i class="fa fa-clock-o"></i>
-                                            <span>Just now</span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-primary"><i class="fa fa-comment"></i></span>
-                                    <span class="body">
-                                        <span class="message">@Model.NotiCount 条新消息</span>
-                                        <span class="time">
-                                            <i class="fa fa-clock-o"></i>
-                                            <span>@Model.NotiLastTime</span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-warning"><i class="fa fa-lock"></i></span>
-                                    <span class="body">
-                                        <span class="message">@Model.LastCommand</span>
-                                        <span class="time">
-                                            <i class="fa fa-clock-o"></i>
-                                            <span>@Model.LastCommandTime</span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="footer">
-                                <a href="#">查看所有消息 <i class="fa fa-arrow-circle-right"></i></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- END NOTIFICATION DROPDOWN -->
-                    <!-- BEGIN INBOX DROPDOWN -->
-                    <li class="dropdown" id="header-message">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope"></i>
-                            <span class="badge">@Model.MessagesCount</span>
-                        </a>
-                        <ul class="dropdown-menu inbox">
-                            <li class="dropdown-title">
-                                <span><i class="fa fa-envelope-o"></i> @Model.MessagesCount 条公告</span>
-                                <span class="compose pull-right tip-right" title="Compose message"><i class="fa fa-pencil-square-o"></i></span>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/Image/avatars/avatar2.jpg" alt="" />
-                                    <span class="body">
-                                        <span class="from">Jane Doe</span>
-                                        <span class="message">
-                                            @Model.MessagesContent
-                                        </span>
-                                        <span class="time">
-                                            <i class="fa fa-clock-o"></i>
-                                            <span>@Model.MessagesTime</span>
-                                        </span>
-                                    </span>
-
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/Image/avatars/avatar2.jpg" alt="" />
-                                    <span class="body">
-                                        <span class="from">Jane Doe</span>
-                                        <span class="message">
-                                            @Model.MessagesContent
-                                        </span>
-                                        <span class="time">
-                                            <i class="fa fa-clock-o"></i>
-                                            <span>@Model.MessagesTime</span>
-                                        </span>
-                                    </span>
-
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/Image/avatars/avatar2.jpg" alt="" />
-                                    <span class="body">
-                                        <span class="from">Jane Doe</span>
-                                        <span class="message">
-                                            @Model.MessagesContent
-                                        </span>
-                                        <span class="time">
-                                            <i class="fa fa-clock-o"></i>
-                                            <span>@Model.MessagesTime</span>
-                                        </span>
-                                    </span>
-
-                                </a>
-                            </li>
-                            <li class="footer">
-                                <a href="#">查看所有公告 <i class="fa fa-arrow-circle-right"></i></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- END INBOX DROPDOWN -->
-                    <!-- BEGIN USER LOGIN DROPDOWN -->
-                    <li class="dropdown user" id="header-user">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img alt="" src="/Image/avatars/avatar3.jpg" />
-                            <span class="username">@Model.UserName</span>
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
-                            <li><a href="login.html"><i class="fa fa-power-off"></i> 注销登录</a></li>
-                        </ul>
-                    </li>
-                    <!-- END USER LOGIN DROPDOWN -->
-                </ul>
-                <!-- END TOP NAVIGATION MENU -->
-            </div>
-
-            <!-- TEAM STATUS -->
-            <div class="container team-status" id="team-status">
-                <div id="scrollbar">
-                    <div class="handle">
-                    </div>
-                </div>
-                <div id="teamslider">
-                    <ul class="team-list">
-                        <li class="current">
-                            <a href="javascript:void(0);">
-                                <div class="image">
-                                    <h1>C303</h1>
-                                </div>
-                                <span class="title">
-                                    @Model.PCState
-                                </span>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" style="width: 33%">
-                                        <span class="sr-only"></span>
-                                    </div>
-                                    <div class="progress-bar progress-bar-warning" style="width: 33%">
-                                        <span class="sr-only"></span>
-                                    </div>
-                                    <div class="progress-bar progress-bar-danger" style="width: 34%">
-                                        <span class="sr-only"></span>
-                                    </div>
-                                </div>
-                                <div class="status">
-                                    <div class="field">
-                                        <span class="badge badge-green">@Model.PCCount</span> 计算机数量
-                                        <span class="pull-right fa fa-check"></span>
-                                    </div>
-                                    <div class="field">
-                                        <span class="badge badge-orange">@Model.OnlineCount</span> 在线人数
-                                        <span class="pull-right fa fa-adjust"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <!-- /TEAM STATUS -->
-        </header>
+    @{
+        CMSAdminWeb.WebUI.Models.Overview overview = new CMSAdminWeb.WebUI.Models.Overview();
+        Html.RenderPartial("HeaderPart", overview);
+    }
+       
         <!--/HEADER -->
         <!-- PAGE -->
         <div id="page">
             <!-- SIDEBAR -->
-            <div id="sidebar" class="sidebar">
-                <div class="sidebar-menu nav-collapse">
-                    <!-- SIDEBAR MENU -->
-                    <div class="divide-20"></div>
-                    <!-- SEARCH BAR -->
-                       
-                    <ul>
-                        <li class="has-sub">
-                            <a href="javascript:;" class="">
-                                <i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">实时监控</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="elements.html"><span class="sub-menu-text">机器状态</span></a></li>
-                                <li><a class="" href="notifications.html"><span class="sub-menu-text">在线学生</span></a></li>
-                                <li><a class="" href="buttons_icons.html"><span class="sub-menu-text">未在线学生</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;" class="">
-                                <i class="fa fa-table fa-fw"></i> <span class="menu-text">统计报表</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="simple_table.html"><span class="sub-menu-text">按课程统计</span></a></li>
-                                <li><a class="" href="dynamic_tables.html"><span class="sub-menu-text">按机房统计</span></a></li>
-                                <li><a class="" href="jqgrid_plugin.html"><span class="sub-menu-text">按学生统计</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;" class="">
-                                <i class="fa fa-pencil-square-o fa-fw"></i> <span class="menu-text">消息管理</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="forms.html"><span class="sub-menu-text">通知管理</span></a></li>
-                                <li><a class="" href="wizards_validations.html"><span class="sub-menu-text">工作日志</span></a></li>
-                                <li><a class="" href="rich_text_editors.html"><span class="sub-menu-text">学生反馈</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;" class="">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> <span class="menu-text">我的课程</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="flot_charts.html"><span class="sub-menu-text">机房预约</span></a></li>
-                                <li><a class="" href="xcharts.html"><span class="sub-menu-text">上传课件</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;" class="">
-                                <i class="fa fa-columns fa-fw"></i> <span class="menu-text">查看课表</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="mini_sidebar.html"><span class="sub-menu-text">机房排课表</span></a></li>
-                                <li><a class="" href="fixed_header.html"><span class="sub-menu-text">学生值班表</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;" class="">
-                                <i class="fa fa-briefcase fa-fw"></i> <span class="menu-text">高级权限</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="google_maps.html"><span class="sub-menu-text">机房机器信息</span></a></li>
-                                <li><a class="" href="vector_maps.html"><span class="sub-menu-text">上课学生信息</span></a></li>
-                                <li><a class="" href="google_maps.html"><span class="sub-menu-text">授课教师信息</span></a></li>
-                                <li><a class="" href="vector_maps.html"><span class="sub-menu-text">教师课程审核</span></a></li>
-                                <li><a class="" href="google_maps.html"><span class="sub-menu-text">学生管理员信息</span></a></li>
-                                <li><a class="" href="vector_maps.html"><span class="sub-menu-text">学生管理员日志</span></a></li>
-                                <li><a class="" href="google_maps.html"><span class="sub-menu-text">学生管理员值班</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- /SIDEBAR MENU -->
-                </div>
-            </div>
+            @{
+                Html.RenderPartial("SiderBarPart", overview); 
+            }
+          
             <!-- /SIDEBAR -->
             <div id="main-content">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" >
                         <div id="content" class="col-lg-12">
                             <!-- PAGE HEADER-->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="page-header">
                                         <div class="description" style="min-height:650px">
-                                            @RenderBody()
+                                               @RenderBody()
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- /PAGE HEADER -->
                         </div>
+                </div>
+                    <div class="footer" >
+                        <div class="center">
+                            机房计算机管理系统 (CMS) | <a href="http://59.72.194.42" target="_blank">软件研发中心</a> @@ @DateTime.Now.Year
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
+            </div>
     <!--/PAGE -->
     <!-- JAVASCRIPTS -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -370,6 +87,7 @@
             App.init(); //Initialise plugins and elements
         });
     </script>
+    
     <!-- /JAVASCRIPTS -->
 </body>
 </html>

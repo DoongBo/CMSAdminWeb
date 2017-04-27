@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SiderBarNodes>
+  <ul Name="Home">
+    <title>实时监控</title>
+    <li Name="Index">机器状态</li>
+    <li Name="OnlineStudent">在线学生</li>
+    <li Name="UnlineStudent">未在线学生</li>
+  </ul>
+  <ul Name="Statistics">
+    <title>统计报表</title>
+    <li Name="Index">按课程统计</li>
+    <li Name="Room">按机房统计</li>
+    <li Name="Student">按学生统计</li>
+  </ul>
+   <ul Name="Message">
+    <title>消息管理</title>
+    <li Name="Index">通知管理</li>
+    <li Name="Journal" Role="stuma">工作日志</li>
+    <li Name="Feedback">学生反馈</li>
+  </ul>
+   <ul Name="Course" Role="teacher">
+    <title>我的课程</title>
+    <li Name="Index">机房预约</li>
+    <li Name="Upload">上传课件</li>
+  </ul>
+   <ul Name="Schedule">
+    <title>查看课表</title>
+    <li Name="Room">机房排课表</li>
+    <li Name="Student">学生值班表</li>
+  </ul>
+   <ul Name="Admin" Role="admin">
+    <title>高级权限</title>
+     <li Name="Index">机房机器信息</li>
+     <li Name="Student">上课学生信息</li>
+     <li Name="Teacher">授课教师信息</li>
+     <li Name="Course">教师课程审核息</li>
+     <li Name="StuMan">学生管理员信息</li>
+     <li Name="Journal">学生管理员日志</li>
+     <li Name="StuManDuty">学生管理员值班</li>
+   </ul>
+</SiderBarNodes>

@@ -3895,7 +3895,7 @@
 			var inner = document.createElement('p');
 			var style = inner.style;
 			style.width = "100%";
-			style.height = "180px";
+			style.height = "200px";
 			style.padding = "0px";
 			
 			var outer = document.createElement('div');
@@ -3904,7 +3904,7 @@
 			style.top = "0px";
 			style.left = "0px";
 			style.visibility = "hidden";
-			style.width = "180px";
+			style.width = "200px";
 			style.height = "150px";
 			style.padding = "0px";
 			style.overflow = "hidden";
@@ -5221,7 +5221,7 @@
 		 *  @example
 		 *    $(document).ready(function() {
 		 *      var oTable = $('#example').dataTable( {
-		 *        "sScrollY": "180px",
+		 *        "sScrollY": "200px",
 		 *        "bPaginate": false
 		 *      } );
 		 *      
@@ -8097,7 +8097,7 @@
 		 *  @example
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
-		 *        "sScrollY": "180px",
+		 *        "sScrollY": "200px",
 		 *        "bPaginate": false
 		 *      } );
 		 *      
@@ -8242,7 +8242,7 @@
 		 *    function initTable ()
 		 *    {
 		 *      return $('#example').dataTable( {
-		 *        "sScrollY": "180px",
+		 *        "sScrollY": "200px",
 		 *        "bPaginate": false,
 		 *        "bRetrieve": true
 		 *      } );
@@ -8269,7 +8269,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "bScrollAutoCss": false,
-		 *        "sScrollY": "180px"
+		 *        "sScrollY": "200px"
 		 *      } );
 		 *    } );
 		 */
@@ -8314,7 +8314,7 @@
 		 *      $('#example').dataTable( {
 		 *        "bScrollInfinite": true,
 		 *        "bScrollCollapse": true,
-		 *        "sScrollY": "180px"
+		 *        "sScrollY": "200px"
 		 *      } );
 		 *    } );
 		 */
@@ -9072,7 +9072,7 @@
 		 *      $('#example').dataTable( {
 		 *        "bScrollInfinite": true,
 		 *        "bScrollCollapse": true,
-		 *        "sScrollY": "180px",
+		 *        "sScrollY": "200px",
 		 *        "iScrollLoadGap": 50
 		 *      } );
 		 *    } );
@@ -9745,7 +9745,7 @@
 		 *  @example
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
-		 *        "sScrollY": "180px",
+		 *        "sScrollY": "200px",
 		 *        "bPaginate": false
 		 *      } );
 		 *    } );

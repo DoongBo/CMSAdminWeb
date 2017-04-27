@@ -1,5 +1,12 @@
-﻿@*@model CMSAdminWeb.WebUI.Models.LoginViewModel*@
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "机器状态";
 }
-<h1>@ViewBag.Title</h1>
+@using CMSAdminWeb.WebUI.Models
+
+<div class="row" id="ContentDiv" style="margin-left:0px;width:99%">
+    @{
+        Html.RenderPartial("PageHeader", new PageHeaderModel() { OwnerRole = "实时监控", CurrentPage = @ViewBag.Title });
+    }
+    
+
+</div>

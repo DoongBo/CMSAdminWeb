@@ -104,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\XMLSources.xml" />
     <Content Include="Content\animatecss\animate.min.css" />
     <Content Include="Content\bootstrap-dist\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-dist\css\bootstrap-theme.min.css" />
@@ -1305,16 +1306,27 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelpClasses\CheckRole.cs" />
+    <Compile Include="HelpClasses\ConvertToMd5.cs" />
+    <Compile Include="HelpClasses\MemberValidationAttribute.cs" />
+    <Compile Include="HelpClasses\XMLReader.cs" />
     <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
     <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Overview.cs" />
+    <Compile Include="Models\PageHeaderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1332,6 +1344,13 @@
     <Content Include="Scripts\xcharts\LICENSE" />
     <Content Include="Scripts\xcharts\README.md" />
     <Content Include="Scripts\jquery\jquery-2.0.3.min.map" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\HeaderPart.cshtml" />
+    <Content Include="Views\Shared\SiderBarPart.cshtml" />
+    <Content Include="Views\Shared\PageHeader.cshtml" />
+    <Content Include="Views\Home\OnlineStudent.cshtml" />
+    <Content Include="Views\Error\Error_404.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1340,7 +1359,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Views\Course\" />
+    <Folder Include="Views\Message\" />
+    <Folder Include="Views\Monit\" />
+    <Folder Include="Views\Schedule\" />
+    <Folder Include="Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CMSAdminWeb.Domain\CMSAdminWeb.Domain.csproj">

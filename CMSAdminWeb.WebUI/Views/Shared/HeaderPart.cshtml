@@ -1,0 +1,223 @@
+﻿@{
+    Layout = null;
+}
+@model CMSAdminWeb.WebUI.Models.Overview
+
+<header class="navbar clearfix" id="header">
+    <div class="container">
+        <div class="navbar-brand">
+            <!-- COMPANY LOGO -->
+            <a href="~/">
+                <img src="/Image/logo/logo.png" alt="Cloud Admin Logo" class="~/Image-responsive" height="30" width="120">
+            </a>
+            <!-- /COMPANY LOGO -->
+            <!-- TEAM STATUS FOR MOBILE -->
+            <div class="visible-xs">
+                <a href="#" class="team-status-toggle switcher btn dropdown-toggle">
+                    <i class="fa fa-users"></i>
+                </a>
+            </div>
+            <!-- /TEAM STATUS FOR MOBILE -->
+            <!-- SIDEBAR COLLAPSE -->
+            <div id="sidebar-collapse" class="sidebar-collapse btn">
+                <i class="fa fa-bars"
+                   data-icon1="fa fa-bars"
+                   data-icon2="fa fa-bars"></i>
+            </div>
+            <!-- /SIDEBAR COLLAPSE -->
+        </div>
+        <!-- NAVBAR LEFT -->
+        <ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+            <li class="dropdown">
+                <a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
+                    <i class="fa fa-users"></i>
+                    <span class="name">机房概况</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /NAVBAR LEFT -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <ul class="nav navbar-nav pull-right">
+            <!-- BEGIN NOTIFICATION DROPDOWN -->
+            <li class="dropdown" id="header-notification">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge">@Model.NotiCount</span>
+
+                </a>
+                <ul class="dropdown-menu notification">
+                    <li class="dropdown-title">
+                        <span><i class="fa fa-bell"></i> @Model.NotiCount 条新消息</span>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="label label-success"><i class="fa fa-user"></i></span>
+                            <span class="body">
+                                <span class="message">@Model.UserCount 人在线 </span>
+                                <span class="time">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>Just now</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="label label-primary"><i class="fa fa-comment"></i></span>
+                            <span class="body">
+                                <span class="message">@Model.NotiCount 条新消息</span>
+                                <span class="time">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>@Model.NotiLastTime</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="label label-warning"><i class="fa fa-lock"></i></span>
+                            <span class="body">
+                                <span class="message">@Model.LastCommand</span>
+                                <span class="time">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>@Model.LastCommandTime</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="footer">
+                        <a href="#">查看所有消息 <i class="fa fa-arrow-circle-right"></i></a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END NOTIFICATION DROPDOWN -->
+            <!-- BEGIN INBOX DROPDOWN -->
+            <li class="dropdown" id="header-message">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge">@Model.MessagesCount</span>
+                </a>
+                <ul class="dropdown-menu inbox">
+                    <li class="dropdown-title">
+                        <span><i class="fa fa-envelope-o"></i> @Model.MessagesCount 条公告</span>
+                        <span class="compose pull-right tip-right" title="Compose message"><i class="fa fa-pencil-square-o"></i></span>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="/Image/avatars/avatar2.jpg" alt="" />
+                            <span class="body">
+                                <span class="from">Jane Doe</span>
+                                <span class="message">
+                                    @Model.MessagesContent
+                                </span>
+                                <span class="time">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>@Model.MessagesTime</span>
+                                </span>
+                            </span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="/Image/avatars/avatar2.jpg" alt="" />
+                            <span class="body">
+                                <span class="from">Jane Doe</span>
+                                <span class="message">
+                                    @Model.MessagesContent
+                                </span>
+                                <span class="time">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>@Model.MessagesTime</span>
+                                </span>
+                            </span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="/Image/avatars/avatar2.jpg" alt="" />
+                            <span class="body">
+                                <span class="from">Jane Doe</span>
+                                <span class="message">
+                                    @Model.MessagesContent
+                                </span>
+                                <span class="time">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>@Model.MessagesTime</span>
+                                </span>
+                            </span>
+
+                        </a>
+                    </li>
+                    <li class="footer">
+                        <a href="#">查看所有公告 <i class="fa fa-arrow-circle-right"></i></a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END INBOX DROPDOWN -->
+            <!-- BEGIN USER LOGIN DROPDOWN -->
+            <li class="dropdown user" id="header-user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img alt="" src="/Image/avatars/avatar3.jpg" />
+                    <span class="username">@Model.UserName</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
+                    <li>    
+                    @Html.ActionLink("注销登录", "LogOut", "Login", null, new { @class="fa fa-power-off"})
+                    </li>
+                </ul>
+            </li>
+            <!-- END USER LOGIN DROPDOWN -->
+        </ul>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+
+    <!-- TEAM STATUS -->
+    <div class="container team-status" id="team-status">
+        <div id="scrollbar">
+            <div class="handle">
+            </div>
+        </div>
+        <div id="teamslider">
+            <ul class="team-list">
+                <li class="current">
+                    <a href="javascript:void(0);">
+                        <div class="image">
+                            <h1>C303</h1>
+                        </div>
+                        <span class="title">
+                            @Model.PCState
+                        </span>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" style="width: 33%">
+                                <span class="sr-only"></span>
+                            </div>
+                            <div class="progress-bar progress-bar-warning" style="width: 33%">
+                                <span class="sr-only"></span>
+                            </div>
+                            <div class="progress-bar progress-bar-danger" style="width: 34%">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                        <div class="status">
+                            <div class="field">
+                                <span class="badge badge-green">@Model.PCCount</span> 计算机数量
+                                <span class="pull-right fa fa-check"></span>
+                            </div>
+                            <div class="field">
+                                <span class="badge badge-orange">@Model.OnlineCount</span> 在线人数
+                                <span class="pull-right fa fa-adjust"></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- /TEAM STATUS -->
+</header>

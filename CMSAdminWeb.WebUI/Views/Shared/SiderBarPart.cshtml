@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@using CMSAdminWeb.WebUI.HelpClasses;
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-menu nav-collapse">
+        <!-- SIDEBAR MENU -->
+        <div class="divide-20"></div>
+        <!-- SEARCH BAR -->
+
+        <ul id="sidebar">
+            @{
+                List<XmlNode> nodelist = XMLReader.ReadXml();
+                int i=0;
+                foreach (XmlNode Node in nodelist)
+                {
+                    i++;
+                    if (CheckRole.Check(Node.Role)) { 
+                    <li class="has-sub" id="@Node.NodeName">
+                        <a href="javascript:;" class="">
+                            @switch (i)
+                            {
+                                case 1:<i class="fa fa-briefcase fa-fw"></i> break;
+                                case 2:<i class="fa fa-bookmark-o fa-fw"></i> break;
+                                case 3:<i class="fa fa-table fa-fw"></i> break;
+                                case 4:<i class="fa fa-pencil-square-o fa-fw"></i>  break;
+                                case 5:<i class="fa fa-bar-chart-o fa-fw"></i> break;
+                                case 6:<i class="fa fa-columns fa-fw"></i> break;
+                                case 7:<i class="fa fa-briefcase fa-fw"></i>  break;
+                                default:<i class="fa fa-briefcase fa-fw"></i> break;
+                            }
+                            <span class="menu-text">@Node.Title</span>
+                            <span class="arrow" id="@Node.NodeName-span"></span>
+                        </a>
+                        <ul class="sub" id="@Node.NodeName-ul">
+                            @foreach (Node node in Node.Nodes)
+                            {
+                                if(CheckRole.Check(node.Role))
+                                { 
+                                <li id="@Node.NodeName-@node.Name">
+                                    <a class="" href="#">
+                                        <span class="sub-menu-text">
+                                            @Html.ActionLink( @node.Text,node.Name,Node.NodeName)
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+                            }
+                        </ul>
+                    </li>
+                    }
+                }
+            }
+                @*<li class="has-sub" id="home-li">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">实时监控</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li id="home-li1"><a class="" href="/"><span class="sub-menu-text">@Html.ActionLink("机器状态","Index","Home")</span></a></li>
+                        <li id="home-li2"><a class="" href="#" onclick=""><span class="sub-menu-text">@Html.ActionLink("在线学生", "OnlineStudent", "Home")</span></a></li>
+                        <li id="home-li3"><a class="" href="#"><span class="sub-menu-text">@Html.ActionLink("缺勤学生","Index","Home")</span></a></li>
+                    </ul>
+                </li>
+                <li class="has-sub" id="statistics-li">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-table fa-fw"></i> <span class="menu-text">统计报表</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li id="statistics-li1"><a class="" href="#"><span class="sub-menu-text">按课程统计</span></a></li>
+                        <li id="statistics-li2"><a class="" href="#"><span class="sub-menu-text">按机房统计</span></a></li>
+                        <li id="statistics-li3"><a class="" href="#"><span class="sub-menu-text">按学生统计</span></a></li>
+                    </ul>
+                </li>
+                <li class="has-sub" id="message-li">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-pencil-square-o fa-fw"></i> <span class="menu-text">消息管理</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li id="message-li1"><a class="" href="forms.html"><span class="sub-menu-text">通知管理</span></a></li>
+                    @if (CheckRole.Check("stuma")) {
+                        <li id="message-li2"><a class="" href="wizards_validations.html"><span class="sub-menu-text">工作日志</span></a></li>
+                    }
+                        <li id="message-li3"><a class="" href="rich_text_editors.html"><span class="sub-menu-text">学生反馈</span></a></li>
+                    </ul>
+                </li>
+                @if (CheckRole.Check("teacher")) {
+                <li class="has-sub" id="cource-li">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> <span class="menu-text">我的课程</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li id="cource-li1"><a class="" href="flot_charts.html"><span class="sub-menu-text">机房预约</span></a></li>
+                        <li id="cource-li2"><a class="" href="xcharts.html"><span class="sub-menu-text">上传课件</span></a></li>
+                    </ul>
+                </li>
+                }
+                <li class="has-sub" id="schedule-li">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-columns fa-fw"></i> <span class="menu-text">查看课表</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li id="schedule-li1"><a class="" href="mini_sidebar.html"><span class="sub-menu-text">机房排课表</span></a></li>
+                        <li id="schedule-li2"><a class="" href="fixed_header.html"><span class="sub-menu-text">学生值班表</span></a></li>
+                    </ul>
+                </li>
+            @if (CheckRole.Check("admin")) {
+                <li class="has-sub" id="admin-li">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-briefcase fa-fw"></i> <span class="menu-text">高级权限</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li id="admin-li1"><a class="" href="google_maps.html"><span class="sub-menu-text">机房机器信息</span></a></li>
+                        <li id="admin-li2"><a class="" href="vector_maps.html"><span class="sub-menu-text">上课学生信息</span></a></li>
+                        <li id="admin-li3"><a class="" href="google_maps.html"><span class="sub-menu-text">授课教师信息</span></a></li>
+                        <li id="admin-li4"><a class="" href="vector_maps.html"><span class="sub-menu-text">教师课程审核</span></a></li>
+                        <li id="admin-li5"><a class="" href="google_maps.html"><span class="sub-menu-text">学生管理员信息</span></a></li>
+                        <li id="admin-li6"><a class="" href="vector_maps.html"><span class="sub-menu-text">学生管理员日志</span></a></li>
+                        <li id="admin-li7"><a class="" href="google_maps.html"><span class="sub-menu-text">学生管理员值班</span></a></li>
+                    </ul>
+                </li>
+            }*@
+</ul>
+        <!-- /SIDEBAR MENU -->
+    </div>
+</div>
+
+<script>
+    var url = document.location.pathname;
+    var controller = url.split('/')[1];
+    if (controller == "")
+        controller = "Home";
+    var action = url.split('/')[2];
+    if (action == "" || action == null)
+        action = "Index";
+    var li = document.getElementById(controller + "-" + action);
+    li.className = "current";
+    var ulli = document.getElementById(controller);
+    ulli.className = "has-sub open";
+    var span = document.getElementById(controller + '-span');
+    span.className = "arrow open";
+    var ul = document.getElementById(controller + '-ul');
+    ul.style.display='block';
+</script>

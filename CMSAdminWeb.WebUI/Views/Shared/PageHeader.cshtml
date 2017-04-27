@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+@model CMSAdminWeb.WebUI.Models.PageHeaderModel
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <div class="clearfix">
+                <h3 class="content-title pull-left">@Model.OwnerRole</h3>
+            </div>
+            <div class="description">@Model.CurrentPage</div>
+        </div>
+    </div>
+</div>
+
